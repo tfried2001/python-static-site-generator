@@ -1,0 +1,25 @@
+image:
+  file: .gitpod.Dockerfile
+
+# List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
+
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+#  - init:  # runs during prebuild
+  - init: |
+      echo 'init script'
+      export PIP_USER=no
+      virtualenv -p python3 $HOME/venv
+      pip install -r $HOME/requirements.txt
+#      mkdir $HOME/venvs/
+#      for MY_VENV in venv1 venv2
+#      do
+#        virtualenv -p python3 $HOME/venvs/$MY_VENV
+#        . $HOME/venvs/$MY_VENV/bin/activate
+#        pip install -r $GITPOD_REPO_ROOT/tools/$MY_VENV/requirements.txt
+#        deactivate
+#      done
+    command: echo 'start script'
